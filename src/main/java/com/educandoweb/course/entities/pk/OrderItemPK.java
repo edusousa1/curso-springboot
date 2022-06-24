@@ -10,15 +10,16 @@ import javax.persistence.ManyToOne;
 import com.educandoweb.course.entities.Order;
 import com.educandoweb.course.entities.Product;
 @Embeddable
-public class OrdemItemPK implements Serializable {
+public class OrderItemPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 		@ManyToOne
 		@JoinColumn(name = "order_id")
 		private Order order;
 		
 		@ManyToOne
-		@JoinColumn(name = "roduct_id")
+		@JoinColumn(name = "product_id")
 		private Product product;
+		
 		public Order getOrder() {
 			return order;
 		}
@@ -43,7 +44,7 @@ public class OrdemItemPK implements Serializable {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			OrdemItemPK other = (OrdemItemPK) obj;
+			OrderItemPK other = (OrderItemPK) obj;
 			return Objects.equals(order, other.order) && Objects.equals(product, other.product);
 		}
 		
