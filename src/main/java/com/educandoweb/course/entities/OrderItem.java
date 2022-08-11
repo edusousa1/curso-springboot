@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "tb_ordem_item")
 public class OrderItem implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@EmbeddedId
 	private OrderItemPK id = new OrderItemPK();
 	private Integer quantity;

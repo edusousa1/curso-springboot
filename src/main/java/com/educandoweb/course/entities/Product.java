@@ -29,11 +29,11 @@ public class Product implements Serializable {
 	private Double price;
 	private String imgUrl;
 
+	// relacionamento com a categoria(category)
 	@ManyToMany
-	@JoinTable(name = "tb_product_category",
-	joinColumns = @JoinColumn(name = "product_id"),inverseJoinColumns = @JoinColumn(name = "category_id"))
+	@JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	private Set<Category> categories = new HashSet<>();
-	
+
 	@OneToMany(mappedBy = "id.product")
 	private Set<OrderItem> items = new HashSet<>();
 
@@ -92,10 +92,11 @@ public class Product implements Serializable {
 	public Set<Category> getCategories() {
 		return categories;
 	}
+
 	@JsonIgnore
-	public Set<Order> GetOrders(){
+	public Set<Order> GetOrders() {
 		Set<Order> set = new HashSet<>();
-		for(OrderItem x : items) {
+		for (OrderItem x : items) {
 			set.add(x.getOrder());
 		}
 		return set;
