@@ -30,19 +30,19 @@ public class Order implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
-	// relacionamento com o Enum(orderstatus)
+
 	private Integer orderStatus;
 
-	// relacionamento com o client(User)
+	
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private User client;
 
-	// pedidos reconhecerem os itens de pedido
+	
 	@OneToMany(mappedBy = "id.order")
 	private Set<OrderItem> items = new HashSet<>();
 
-	// relacionamento com o pagamento(payment)
+	
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
 

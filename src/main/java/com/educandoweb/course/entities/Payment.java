@@ -23,7 +23,7 @@ public class Payment implements Serializable {
 	private Long id;
 	private Instant moment;
 	
-	//relacionamento com o pedido(Order)
+	
 	@JsonIgnore
 	@OneToOne
 	@MapsId
